@@ -12,7 +12,6 @@
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json" />
     <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9" />
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
@@ -538,6 +537,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.getElementById('submitButton').addEventListener('click', async function(event) {
+        event.preventDefault(); // Prevent the default form submission (if inside a form)
 
         // Get the input value from the taskName field
         const taskName = document.getElementById('taskName').value;
@@ -547,32 +547,36 @@
             return;
         }
 
-        // Prepare the data to be sent in the API request
-        const requestData = {
-            prompt: taskName // Use taskName as the prompt for your backend
+        // Prepare the request data
+        const data = {
+            model: 'gpt-4',  // Specify the model you want to use (e.g., 'gpt-4')
+            messages: [
+                { role: 'user', content: taskName }  // The user's input is passed as the prompt
+            ]
         };
 
         try {
-            // Send a POST request to your server with the task name
-            const response = await fetch('http://localhost:5000/generate', {
+            // Send a POST request to OpenAI API
+            const response = await fetch('https://api.openai.com/v1/chat/completions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer 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', // Replace with your actual API key
                 },
-                body: JSON.stringify(requestData),
+                body: JSON.stringify(data),
             });
 
-            // Parse the response
-            const data = await response.json();
+            // Parse the response from OpenAI
+            const responseData = await response.json();
 
             if (response.ok) {
-                // Handle the response if successful
-                console.log('Response from server:', data);
-                alert('Task submitted successfully!');
+                // Handle the response from OpenAI (e.g., display the assistant's reply)
+                console.log('AI Response:', responseData);
+                alert('Response from AI: ' + responseData.choices[0].message.content);
             } else {
-                // Handle errors if the response is not ok
-                console.error('Error from server:', data.error);
-                alert('Failed to submit the task.');
+                // Handle any errors from OpenAI API
+                console.error('Error from OpenAI:', responseData.error);
+                alert('Failed to get a response from OpenAI: ' + responseData.error.message);
             }
         } catch (error) {
             console.error('Error sending request:', error);
