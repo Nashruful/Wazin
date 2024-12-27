@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180" />
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json" />
+    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9" />
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/" />
+    <style>
+        .information-page {
+            flex-grow: 1;
+            padding: 40px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .custom-container {
+            justify-content: end;
+            width: 80vh;
+            background-color: #f8f9fa;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .fixed-bottom-left {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <!-- Logo -->
+        <div>
+            <div class="logo">
+                <img src="assets/wazin_logo.png" alt="Logo" />
+                <!-- Add your logo here -->
+            </div>
+
+            <!-- Menu Items -->
+            <div class="menu-item" id="dashboard">
+                <span>لوحة المعلومات</span>
+                <i class="fas fa-tachometer-alt"></i>
+                <!-- Dashboard Icon -->
+            </div>
+            <div class="menu-item" id="tasks">
+                <span>المهمات</span>
+                <i class="fas fa-tasks"></i>
+                <!-- Tasks Icon -->
+            </div>
+            <div class="menu-item" id="reports">
+                <span>التقارير</span>
+                <i class="fas fa-chart-line"></i>
+                <!-- Reports Icon -->
+            </div>
+            <div class="menu-item" id="goals">
+                <span>الأهداف السنوية</span>
+                <i class="fas fa-bullseye"></i>
+                <!-- Goals Icon -->
+            </div>
+            <div class="menu-item" id="more">
+                <span>المزيد</span>
+                <i class="fas fa-ellipsis-h"></i>
+                <!-- More Icon -->
+            </div>
+        </div>
+
+        <!-- Bottom Right Profile and Menu Items -->
+        <div>
+            <div class="bottom-menu-item">
+                <span>الإعدادات</span>
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="bottom-menu-item">
+                <span>تسجيل الخروج</span>
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+
+            <div class="profile">
+                <div class="profile-info">
+                    <span class="name">Osama Hamed</span>
+                    <span class="email">osama.fahad.hamed@gmail.com</span>
+                </div>
+                <img src="assets/guy.png" alt="User Image" />
+            </div>
+        </div>
+    </div>
+    <div class="top-container" style="margin-bottom: 50px">
+        <i class="fas fa-info-circle"></i>
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-bell"></i>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input class="input-group" type="text" placeholder="البحث" />
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Main content goes here -->
+        <div id="dashboardContent" class="content-section">
+            <h1 class="mb-5" style="color: #1B2559; text-align: right;">لوحة المعلومات</h1>
+            <div class="row mb-5 justify-content-between">
+                <div class="col-md-2"><img src="assets/global_rating.png" class="img-fluid"></div>
+                <div class="col-md-2"><img src="assets/left_of_goal_percentage.png" class="img-fluid"></div>
+                <div class="col-md-2"><img src="assets/goal_percentage.png" class="img-fluid"></div>
+                <div class="col-md-2"><img src="assets/submitted_rating.png" class="img-fluid"></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-8"><img src="assets/keep_track_performance.png" class="img-fluid w-100 h-100"></div>
+                <div class="col-md-4"><img src="assets/rating_kpis.png" class="img-fluid w-100 h-100"></div>
+            </div>
+            <div class="row mt-5 justify-content-between">
+                <div class="col-md-4"><img src="assets/strength_points.png" class="img-fluid w-100"></div>
+                <div class="col-md-8"><img src="assets/goals.png" class="img-fluid w-100"></div>
+            </div>
+        </div>
+        <div id="tasksContent" class="content-section active">
+            <!-- Existing content for tasks -->
+            <h1 class="mb-5" style="color: #1B2559; text-align: right;">المهمات</h1>
+
+
+
+            <div class="shadow-container mt-5" style="
+                        background-color: #ffffff;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        padding: 20px;
+                        border-radius: 8px;
+                        width: 100%;
+                    ">
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option selected>التصنيف: الأدوات</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="بحث" />
+                            <button class="btn btn-outline-secondary">🔍</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 justify-content-center">
+                        <h3 class="mb-0">المهام المطلوبة</h3>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: right">المهمة</th>
+                            <th style="text-align: right">نوع المهمة</th>
+                            <th style="text-align: right">تاريخ البدء</th>
+                            <th style="text-align: right">حالة المهمة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody">
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-completed">مكتمل</span>
+                            </td>
+                            <td style="text-align: right">10 أيام</td>
+                            <td style="text-align: right">سنوي</td>
+                            <td style="text-align: right">
+                                مراجعة قاعدة بيانات العملاء وتحليل الأنشطة لتحديد الأولويات
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-not-completed">غير مكتمل</span>
+                            </td>
+                            <td style="text-align: right">10 أيام</td>
+                            <td style="text-align: right">سنوي</td>
+                            <td style="text-align: right">
+                                المساهمة في زيادة الإيرادات بنسبة 20٪ مقارنة بالعام السابق
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-not-completed">غير مكتمل</span>
+                            </td>
+                            <td style="text-align: right">10 أيام</td>
+                            <td style="text-align: right">سنوي</td>
+                            <td style="text-align: right">
+                                العمل مع الإدارة لتطوير خطة مبيعات سنوية.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-completed">مكتمل</span>
+                            </td>
+                            <td style="text-align: right">10 أيام</td>
+                            <td style="text-align: right">أسبوعي</td>
+                            <td style="text-align: right">
+                                تقديم تقرير أسبوعي للإدارة عن الأنشطة والإيرادات
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-not-completed">غير مكتمل</span>
+                            </td>
+                            <td style="text-align: right">10 أيام</td>
+                            <td style="text-align: right">شهري</td>
+                            <td style="text-align: right">
+                                تحقيق هدف المبيعات الشهري المحدد من قبل الإدارة
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-completed">مكتمل</span>
+                            </td>
+                            <td style="text-align: right">5 أيام</td>
+                            <td style="text-align: right">شهري</td>
+                            <td style="text-align: right">
+                                إعداد تقرير شهري عن أداء المبيعات
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-not-completed">غير مكتمل</span>
+                            </td>
+                            <td style="text-align: right">3 أيام</td>
+                            <td style="text-align: right">يومي</td>
+                            <td style="text-align: right">متابعة العملاء الجدد</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                <span class="status-completed">مكتمل</span>
+                            </td>
+                            <td style="text-align: right">7 أيام</td>
+                            <td style="text-align: right">أسبوعي</td>
+                            <td style="text-align: right">تحليل بيانات المبيعات الأسبوعية</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-between align-items-center">
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">
+                                    << /a>
+                            </li>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item" style="margin-right: 21px">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item" style="margin-right: 21px">
+                                <p>...</p>
+                            </li>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">6</a>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">></a>
+                            </li>
+                            </li>
+                        </ul>
+                    </nav>
+                    <span style="color: #b5b7c0">لرؤية جميع المهام وعددها 48 تقييم</span>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold">إدخال مهمة جديدة</h3>
+                </div>
+                <div class="form-container">
+                    <form class="row g-3" style="text-align: right;">
+                        <div class="col-md-3">
+                            <label for="endDate" class="form-label">تاريخ النهاية</label>
+                            <input type="date" class="form-control" id="endDate" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="startDate" class="form-label">تاريخ البداية</label>
+                            <input type="date" class="form-control" id="startDate" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="taskType" class="form-label">وصف المهمة</label>
+                            <input type="text" class="form-control" id="taskType" placeholder="" />
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="taskName" class="form-label">اسم المهمة</label>
+                            <input type="text" class="form-control" id="taskName" placeholder="" />
+                        </div>
+                        <div class="col-md-1 d-flex align-items-end justify-content-center">
+                            <span class="check-icon">&#10004;</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button type="reset" class="btn btn-cancel">إلغاء</button>
+                            <span style="padding-left: 20px;"></span>
+                            <button type="submit" class="btn btn-submit"  id="submitButton">إدخال الهدف</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="reportsContent" class="content-section">
+            
+
+        </div>
+        <div id="goalsContent" class="content-section">
+            <h1 class="mb-5" style="color: #1B2559; text-align: right;">المهمات</h1>
+
+
+
+            <div class="shadow-container mt-5" style="
+                        background-color: #ffffff;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        padding: 20px;
+                        border-radius: 8px;
+                        width: 100%;
+                    ">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: right">الإنجاز</th>
+                            <th style="text-align: right">الموعد النهائي</th>
+                            <th style="text-align: right">نوع الهدف</th>
+                            <th style="text-align: right">الهدف</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody">
+                        <tr>
+                            <td style="text-align: right; color: darkgreen;">99%</td>
+                            <td style="text-align: right">1445/10/23</td>
+                            <td style="text-align: right"><span class="status-for-goal">تدريبية</span></td>
+                            <td style="text-align: right">تحسين مهارات التفاوض والإقناع</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; color: green;">88%</td>
+                            <td style="text-align: right">1445/10/23</td>
+                            <td style="text-align: right"><span class="status-for-goal">تدريبية</span></td>
+                            <td style="text-align: right">التدريب على اساليب التواصل الفعّال</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; color: orange;">79%</td>
+                            <td style="text-align: right">1445/10/23</td>
+                            <td style="text-align: right"><span class="status-for-goal">تدريبية</span></td>
+                            <td style="text-align: right">تطوير استراتيجيات البيع الحديثة</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; color: orange;">53%</td>
+                            <td style="text-align: right">1445/10/23</td>
+                            <td style="text-align: right"><span class="status-for-goal">تدريبية</span></td>
+                            <td style="text-align: right">تطوير خطط تسويقية مبتكرة</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; color: orange;">43%</td>
+                            <td style="text-align: right">1445/10/23</td>
+                            <td style="text-align: right"><span class="status-for-goal">تدريبية</span></td>
+                            <td style="text-align: right">المشاركة في دورات القيادة</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; color: red;">34%</td>
+                            <td style="text-align: right">1445/10/23</td>
+                            <td style="text-align: right"><span class="status-for-goal">تدريبية</span></td>
+                            <td style="text-align: right">تحليل أداء الفريق وتحسين الانتاجية</td>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-between align-items-center">
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">
+                                    < </a>
+                            </li>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item" style="margin-right: 21px">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item" style="margin-right: 21px">
+                                <p>...</p>
+                            </li>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">6</a>
+                            <li class="page-item" style="margin-right: 15px">
+                                <a class="page-link" href="#">></a>
+                            </li>
+                            </li>
+                        </ul>
+                    </nav>
+                    <span style="color: #b5b7c0">لرؤية جميع المهام وعددها 48 تقييم</span>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold">إدخال مهمة جديدة</h3>
+                </div>
+                <div class="form-container">
+                    <form class="row g-3" style="text-align: right;">
+
+                        <div class="col-md-4">
+                            <label for="startDate" class="form-label">الموعد النهائي</label>
+                            <input type="text" class="form-control" id="taskType" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="taskType" class="form-label">نوع الهدف</label>
+                            <input type="text" class="form-control" id="taskType" placeholder="" />
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="taskName" class="form-label">اسم الهدف</label>
+                            <input type="text" class="form-control" id="taskName" placeholder="" />
+                        </div>
+                        <div class="col-md-1 d-flex align-items-end justify-content-center">
+                            <span class="check-icon">&#10004;</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button type="reset" class="btn btn-cancel">إلغاء</button>
+                            <span style="padding-left: 20px;"></span>
+                            <button type="submit" class="btn btn-submit">إدخال الهدف</button>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+        <div id="moreContent" class="content-section">
+            <div class="shadow-container mt-5 ">
+                <h1 class="mb-5" style="color: #1B2559; text-align: right;">قائمة الموظفين</h1>
+
+                <div class="" style="
+                background-color: #ffffff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                border-radius: 8px;
+                width: 100%;
+            ">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>التفاصيل</th>
+                                <th>الرقم الوظيفي</th>
+                                <th>اسم الموظف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>123535</td>
+                                <td>أسامة حامد</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>145736</td>
+                                <td>سارة عبدالله</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>547373</td>
+                                <td>يوسف الزهراني</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>736274</td>
+                                <td>ريم المطيري</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>526274</td>
+                                <td>بندر المطيري</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>734246</td>
+                                <td>فهد الحربي</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>472708</td>
+                                <td>محمد القحطاني</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-secondary" id="evaluateEmployeeBtn">تقييم
+                                        الموظف</button></td>
+                                <td>168373</td>
+                                <td>عبدالله الغامدي</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="emptyContent" class="content-section">
+
+            <div class="container">
+                <p>hello</p>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('submitButton').addEventListener('click', async function(event) {
+
+        // Get the input value from the taskName field
+        const taskName = document.getElementById('taskName').value;
+
+        if (!taskName) {
+            alert('Please enter a task name.');
+            return;
+        }
+
+        // Prepare the data to be sent in the API request
+        const requestData = {
+            prompt: taskName // Use taskName as the prompt for your backend
+        };
+
+        try {
+            // Send a POST request to your server with the task name
+            const response = await fetch('http://localhost:5000/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData),
+            });
+
+            // Parse the response
+            const data = await response.json();
+
+            if (response.ok) {
+                // Handle the response if successful
+                console.log('Response from server:', data);
+                alert('Task submitted successfully!');
+            } else {
+                // Handle errors if the response is not ok
+                console.error('Error from server:', data.error);
+                alert('Failed to submit the task.');
+            }
+        } catch (error) {
+            console.error('Error sending request:', error);
+            alert('An error occurred while sending the request.');
+        }
+    });
+        // JavaScript logic for pagination and search can be added here
+        const searchInput = document.querySelector('input[type="text"]');
+        const taskTableBody = document.getElementById("taskTableBody");
+
+        searchInput.addEventListener("input", (e) => {
+            const searchText = e.target.value.toLowerCase();
+            const rows = taskTableBody.querySelectorAll("tr");
+
+            rows.forEach((row) => {
+                const taskText = row.querySelectorAll("td")[3].textContent.toLowerCase();
+                if (taskText.includes(searchText)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+
+        document.getElementById('evaluateEmployeeBtn').addEventListener('click', () => {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('reportsContent').classList.add('active');
+        });
+
+        const menuItems = document.querySelectorAll('.menu-item');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                switch (item.id) {
+                    case 'dashboard':
+                        document.getElementById('dashboardContent').classList.add('active');
+                        break;
+                    case 'tasks':
+                        document.getElementById('tasksContent').classList.add('active');
+                        break;
+                    case 'reports':
+                        document.getElementById('reportsContent').classList.add('active');
+                        break;
+                    case 'goals':
+                        document.getElementById('goalsContent').classList.add('active');
+                        break;
+                    case 'more':
+                        document.getElementById('moreContent').classList.add('active');
+                        break;
+                    default:
+                        document.getElementById('emptyContent').classList.add('active');
+                        break;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
