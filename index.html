@@ -989,12 +989,13 @@
                 alert('Please enter a task name.');
                 return;
             }
-            let taskDescription = "قم بتقييم هذه المهمة بحسب صحتها و مدى إرتباطها مع هذا الKPI ( تحقيق مبيعات 10 مليون ريال )- اسم المهمة: إدخال بيانات العملاء في نظام المحاسبة- وصف المهمة: قمت بإدخال معلومات العملاء اللي وصلوا اليوم للمحل التجاري حقنا عشان نحاول استهدافهم في كعملاء دائمين لناnاحتاج منك تعطيني هذه المخرجات بناء على هذه المدخلات:1- معدل ارتباط هذه المهمة مع الKPI المذكور أعلاه فقط بدون اي مخرجات اخرى فقط المعدل";
+            let word = "قم بتقييم هذه المهمة بحسب صحتها و مدى إرتباطها مع هذا الKPI ( تحقيق مبيعات 10 مليون ريال ) - اسم المهمة: إدخال بيانات العملاء في نظام المحاسبة- وصف المهمة: قمت بإدخال معلومات العملاء اللي وصلوا اليوم للمحل التجاري حقنا عشان نحاول استهدافهم في كعملاء دائمين لنااحتاج منك تعطيني هذه المخرجات بناء على هذه المدخلات:1- معدل ارتباط هذه المهمة مع الKPI المذكور أعلاه فقط بدون اي مخرجات اخرى فقط المعدل بشكل تقريبي ،في حال لم تستطع حساب المعدل اعطيني رقم عشوائي مابين 3 الى 4.5"
+
 
 
             // Prepare the request data
             const data = {
-                prompt: taskName   // The user's input is passed as the prompt
+                prompt: word   // The user's input is passed as the prompt
             };
 
             try {
@@ -1005,6 +1006,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data),
+                    mode: 'cors'
                 });
 
                 // Parse the response from OpenAI
@@ -1013,7 +1015,7 @@
                 if (response.ok) {
                     // Handle the response from OpenAI (e.g., display the assistant's reply)
                     console.log('AI Response:', responseData);
-                    alert('Response from AI: ' + responseData.choices[0].message.content);
+                    alert('Response from AI: ' + responseData.response);
                 } else {
                     // Handle any errors from OpenAI API
                     console.error('Error from OpenAI:', responseData.error);
@@ -1021,7 +1023,7 @@
                 }
             } catch (error) {
                 console.error('Error sending request:', error);
-                alert('An error occurred while sending the request.');
+                alert('An error occured.', error);
             }
         });
         // JavaScript logic for pagination and search can be added here
