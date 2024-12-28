@@ -121,11 +121,57 @@
         <!-- Main content goes here -->
         <div id="dashboardContent" class="content-section">
             <h1 class="mb-5" style="color: #1B2559; text-align: right;">لوحة المعلومات</h1>
-            <div class="row mb-5 justify-content-between">
-                <div class="col-md-2"><img src="assets/global_rating.png" class="img-fluid"></div>
-                <div class="col-md-2"><img src="assets/left_of_goal_percentage.png" class="img-fluid"></div>
-                <div class="col-md-2"><img src="assets/goal_percentage.png" class="img-fluid"></div>
-                <div class="col-md-2"><img src="assets/submitted_rating.png" class="img-fluid"></div>
+            <div class="container my-5">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="rating-card d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="rating-title">التقييم لعام 2023</div>
+                                <div class="rating-value" id="rating-value-2023">3.4</div>
+                            </div>
+                            <div class="rating-icon">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="rating-card d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="rating-title">نسبة المتبقي من الاهداف السنوية</div>
+                                <div class="rating-value">90%</div>
+                            </div>
+                            <div class="rating-icon">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="rating-card d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="rating-title">معدل الاهداف السنوية</div>
+                                <div class="rating-value">79%</div>
+                            </div>
+                            <div class="rating-icon">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="rating-card d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="rating-title">معدل انجاز المهمات</div>
+                                <div class="rating-value">42%</div>
+                            </div>
+                            <div class="rating-icon">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row mt-5">
                 <div class="col-md-8"><img src="assets/keep_track_performance.png" class="img-fluid w-100 h-100"></div>
@@ -990,7 +1036,7 @@
                 alert('Please enter a task name.');
                 return;
             }
-            let word = "قم بتقييم هذه المهمة بحسب صحتها و مدى إرتباطها مع هذا الKPI ( تحقيق مبيعات 10 مليون ريال )\n\n- اسم المهمة: " + taskName + "\n- وصف المهمة: " + taskType + "\n\nاحتاج منك تعطيني هذه المخرجات بناء على هذه المدخلات:\n\n1- معدل ارتباط هذه المهمة مع الKPI المذكور أعلاه فقط بدون اي مخرجات اخرى فقط المعدل بشكل تقريبي ،في حال لم تستطع حساب المعدل اعطيني رقم عشوائي مابين 3 الى 4.5";
+            let word = "قم بتقييم هذه المهمة بحسب صحتها و مدى إرتباطها مع هذا الKPI ( تحقيق مبيعات 10 مليون ريال )\n\n- اسم المهمة: " + taskName + "\n- وصف المهمة: " + taskType + "\n\nاحتاج منك تعطيني هذه المخرجات بناء على هذه المدخلات:\n\n1- معدل ارتباط هذه المهمة مع الKPI المذكور أعلاه فقط بدون اي مخرجات اخرى فقط المعدل بشكل تقريبي ،في حال لم تستطع حساب المعدل اعطيني رقم عشوائي مابين 3 الى 4.5 , make sure that the response is ONLY A NUMBER NOTHING ELSE!";
 
 
 
@@ -1014,11 +1060,17 @@
                 const responseData = await response.json();
 
                 if (response.ok) {
-                    // Handle the response from OpenAI (e.g., display the assistant's reply)
                     console.log('AI Response:', responseData);
-                    alert(responseData.response);
+
+                    const ratingValue = responseData.response.trim();
+
+                    if (ratingValue) {
+                // Update the rating value in the HTML using the unique ID
+                document.getElementById('rating-value-2023').textContent = ratingValue;
+            } else {
+                alert('Invalid rating value received.');
+            }
                 } else {
-                    // Handle any errors from OpenAI API
                     console.error('Error from OpenAI:', responseData.error);
                     alert('Failed to get a response from OpenAI: ' + responseData.error.message);
                 }
