@@ -168,10 +168,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="text-align: right">المهمة</th>
+                            <th style="text-align: right">حالة المهمة</th>
                             <th style="text-align: right">نوع المهمة</th>
                             <th style="text-align: right">تاريخ البدء</th>
-                            <th style="text-align: right">حالة المهمة</th>
+                            <th style="text-align: right">المهمة</th>
                         </tr>
                     </thead>
                     <tbody id="taskTableBody">
@@ -894,7 +894,7 @@
         </div>
         <div id="moreContent" class="content-section">
             <div class="shadow-container mt-5 ">
-                <h1 class="mb-5" style="color: #1B2559; text-align: right;">قائمة الموظفين</h1>
+                <h1 class="mb-5" style="color: #1B2559; text-align: right;">قائمة الموظفين ( صفحة المدير )</h1>
 
                 <div class="" style="
                 background-color: #ffffff;
@@ -984,12 +984,13 @@
 
             // Get the input value from the taskName field
             const taskName = document.getElementById('taskName').value;
+            const taskType = document.getElementById('taskType').value;
 
-            if (!taskName) {
+            if (!taskName || !taskType) {
                 alert('Please enter a task name.');
                 return;
             }
-            let word = "قم بتقييم هذه المهمة بحسب صحتها و مدى إرتباطها مع هذا الKPI ( تحقيق مبيعات 10 مليون ريال ) - اسم المهمة: إدخال بيانات العملاء في نظام المحاسبة- وصف المهمة: قمت بإدخال معلومات العملاء اللي وصلوا اليوم للمحل التجاري حقنا عشان نحاول استهدافهم في كعملاء دائمين لنااحتاج منك تعطيني هذه المخرجات بناء على هذه المدخلات:1- معدل ارتباط هذه المهمة مع الKPI المذكور أعلاه فقط بدون اي مخرجات اخرى فقط المعدل بشكل تقريبي ،في حال لم تستطع حساب المعدل اعطيني رقم عشوائي مابين 3 الى 4.5"
+            let word = "قم بتقييم هذه المهمة بحسب صحتها و مدى إرتباطها مع هذا الKPI ( تحقيق مبيعات 10 مليون ريال )\n\n- اسم المهمة: " + taskName + "\n- وصف المهمة: " + taskType + "\n\nاحتاج منك تعطيني هذه المخرجات بناء على هذه المدخلات:\n\n1- معدل ارتباط هذه المهمة مع الKPI المذكور أعلاه فقط بدون اي مخرجات اخرى فقط المعدل بشكل تقريبي ،في حال لم تستطع حساب المعدل اعطيني رقم عشوائي مابين 3 الى 4.5";
 
 
 
@@ -1015,7 +1016,7 @@
                 if (response.ok) {
                     // Handle the response from OpenAI (e.g., display the assistant's reply)
                     console.log('AI Response:', responseData);
-                    alert('Response from AI: ' + responseData.response);
+                    alert(responseData.response);
                 } else {
                     // Handle any errors from OpenAI API
                     console.error('Error from OpenAI:', responseData.error);
