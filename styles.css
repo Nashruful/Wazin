@@ -14,6 +14,36 @@
   color: white;
   border: none;
 }
+.rating-card {
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.rating-title {
+  color: #AAB1C6; /* Light grayish blue */
+  font-size: 18px;
+}
+.rating-value {
+  color: #2C3D72; /* Dark blue */
+  font-size: 36px;
+  font-weight: bold;
+}
+.rating-icon {
+  background-color: #f4f8ff; /* Light blue background */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.rating-icon i {
+  font-size: 24px;
+  color: #EB492E; /* Orange */
+}
 .btn-submit:hover,
 .btn-cancel:hover {
   opacity: 0.9;
